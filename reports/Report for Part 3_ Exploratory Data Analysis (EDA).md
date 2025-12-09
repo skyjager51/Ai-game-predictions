@@ -4,13 +4,13 @@
 
 This section details the visual and statistical analysis performed to understand the dataset's underlying structures, class balances, and feature relationships. The analysis was conducted in two phases: a human-centric visual inspection using the filtered dataset and a statistical evaluation using the encoded, cleaned dataset.
 
-![][image1]
-
 ### **3.1 Visual Analysis and Data Distribution**
 
 #### **Class Imbalance and Target Definition**
 
 The analysis began by examining the distribution of the target variable, Is\_hit. A "Hit" is defined as a game achieving sales within the top 90th percentile of its specific platform.
+
+![Bar chart showing the severe imbalance between Flop (0) and Hit (1) classes](https://raw.githubusercontent.com/skyjager51/Ai-game-predictions/main/reports/visualizations/3.%20is%20hit%20unbalanced.png)
 
 * **Observation:** The dataset exhibits a significant class imbalance. Out of approximately 16,000 entries, only $\\sim 1,650$ are classified as "Hits," with the vast majority classified as "Flops".   
 *  **Implication:** This confirms the stringent nature of the "Hit" definition. Metrics such as **Accuracy** alone will be misleading; **Precision, Recall, and F1-Score** will be critical for model evaluation.
@@ -19,11 +19,11 @@ The analysis began by examining the distribution of the target variable, Is\_hit
 
 The relationship between categorical features (Genre, Platform) and the target was analyzed to identify early predictors of success.
 
-![][image2]
+![Bar chart comparing the count of Hits and Flops across different genres](https://raw.githubusercontent.com/skyjager51/Ai-game-predictions/main/reports/visualizations/3.%20is%20hit%20by%20genre.png)
 
 * **Genre Performance:** While 'Action' and 'Sports' genres dominate in terms of pure release volume, they do not guarantee success. 'Shooter' and 'Role-Playing' games possess a **superior Hit-to-Flop ratio**. Conversely, 'Adventure' games appeared to be poor predictors of commercial success.
 
-![][image3]
+![Bar chart showing the count of Hits and Flops across different platforms](https://raw.githubusercontent.com/skyjager51/Ai-game-predictions/main/reports/visualizations/3.%20is%20hit%20by%20platform.png)
 
 * **Platform Dynamics:** A discrepancy was observed between platform popularity and hit rate.
 
@@ -32,11 +32,11 @@ The relationship between categorical features (Genre, Platform) and the target w
 
 #### **Sales and Temporal Trends**
 
-![][image4]
+![Box plot showing the clear separation of Global Sales for Hit games vs Flop games](https://raw.githubusercontent.com/skyjager51/Ai-game-predictions/main/reports/visualizations/3.%20is%20hit%20global%20sales.png)
 
 * **Sales Distribution:** Boxplot analysis confirmed a heavy skew in Global\_Sales. "Hits" are distinctively separated by sales volume, typically exceeding $5$ million units, while "Flops" are compressed into the lower sales quartiles.
 
-![][image5]
+![Line chart showing the total number of games released over time, peaking around 2008](https://raw.githubusercontent.com/skyjager51/Ai-game-predictions/main/reports/visualizations/3.%20trend%20over%20time.png)
 
 * **Temporal Analysis:** The dataset reflects the industry boom of the 7th console generation (2008-2009). Data volume declines significantly after 2017, indicating the dataset is most effective for modeling **historical trends** rather than current-gen market dynamics.
 
@@ -62,7 +62,7 @@ Statistical methods were applied to the encoded dataset to validate feature inde
 
 A correlation heatmap was generated to detect multicollinearity among features.
 
-![][image6]
+![Correlation Heatmap of all processed features, showing low multicollinearity](https://raw.githubusercontent.com/skyjager51/Ai-game-predictions/main/reports/visualizations/3.%20heatmap.png)
 
 * **Result:** The analysis demonstrated **low correlation coefficients** across almost all feature pairs.
 
@@ -72,7 +72,7 @@ A correlation heatmap was generated to detect multicollinearity among features.
 
 A pair plot analysis visualized the decision boundaries between "Hits" and "Flops" across variables such as Year and Publisher.
 
-![][image7]
+![Pair plot visualizing feature overlap between the Hit and Flop classes for select features](https://raw.githubusercontent.com/skyjager51/Ai-game-predictions/main/reports/visualizations/3.%20pair%20plot.png)
 
 * **Observation:** While Global\_Sales provides a clear linear separation (by definition), other features like Publisher and Year show **significant overlap** between classes. There is no clear linear boundary that distinguishes a hit from a flop based purely on these metadata features24.
 
